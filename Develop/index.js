@@ -99,7 +99,16 @@ For any questions, please contact me at [${data.email}](mailto:${data.email}), o
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+        .then((answers) => {
+            writeToFile('README.md', answers);
+        })
+        .catch((error) => {
+            console.error('An error occurred: ', error);
+        });
+}
 
 // Function call to initialize app
 init();
+
