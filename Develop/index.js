@@ -56,7 +56,47 @@ const questions = [
 ;
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateMarkdown(data), (err) =>
+        err ? console.error(err) : console.log('README.md has been generated!')
+    );
+}
+
+// Function to generate markdown content
+function generateMarkdown(data) {
+    return `
+# ${data.title}
+
+## Description
+${data.description}
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [License](#license)
+- [Questions](#questions)
+
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+## Contributing
+${data.contribution}
+
+## Tests
+${data.tests}
+
+## License
+This project is licensed under the ${data.license} license.
+
+## Questions
+For any questions, please contact me at [${data.email}](mailto:${data.email}), or you can find more of my work at [${data.github}](https://github.com/${data.github}/).
+    `;
+}
 
 // TODO: Create a function to initialize app
 function init() {}
